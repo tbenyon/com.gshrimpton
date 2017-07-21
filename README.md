@@ -1,4 +1,4 @@
-#GShrimpton.com Website
+# GShrimpton.com Website
 
 Website with automated deployment. Uses, and therefore requires, [Terraform](https://www.terraform.io/).
 
@@ -22,6 +22,8 @@ AWS_ACCESS_KEY_ID=<your_access_key_id> AWS_SECRET_ACCESS_KEY=<your-access-key> t
 
 ## Deploy to AWS
 
+AWS profile can be set using `AWS_PROFILE` environment variable.
+
 ```bash
-AWS_ACCESS_KEY_ID=<your_access_key_id> AWS_SECRET_ACCESS_KEY=<your-access-key> terraform apply
+[AWS_PROFILE=profile-name] terraform apply
 ```
