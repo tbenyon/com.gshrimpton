@@ -2,31 +2,28 @@ version: 2
 
 jobs:
   build:
+    branches:
+      only:
+        - master
     docker:
       - image: buildpack-deps:trusty
     steps:
       - checkout
-
       - run:
           name: Install unzip
           command: apt-get update && apt-get install unzip
-
       - run:
           name: Download Terraform
           command: curl -sSL https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_amd64.zip > terraform.zip
-
       - run:
           name: Install Terraform
           command: unzip terraform.zip
-
       - run:
           name: Init Terraform Backend
           command: ./terraform init
-
       - run:
           name: Plan
           command: ./terraform plan -out=terraform.plan
-
       - run:
           name: Deploy
           command: ./terraform apply terraform.plan
