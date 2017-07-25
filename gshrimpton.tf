@@ -27,3 +27,27 @@ resource "aws_s3_bucket_object" "homepage" {
   etag   = "${md5(file("web/index.html"))}"
   content_type = "text/html"
 }
+
+resource "aws_s3_bucket_object" "favicon" {
+  bucket = "${aws_s3_bucket.web_bucket.bucket}"
+  key    = "favicon.png"
+  source = "web/favicon.png"
+  etag   = "${md5(file("web/favicon.png"))}"
+  content_type = "image/png"
+}
+
+resource "aws_s3_bucket_object" "styles" {
+  bucket = "${aws_s3_bucket.web_bucket.bucket}"
+  key    = "index.css"
+  source = "web/index.css"
+  etag   = "${md5(file("web/index.css"))}"
+  content_type = "text/css"
+}
+
+resource "aws_s3_bucket_object" "logo-large" {
+  bucket = "${aws_s3_bucket.web_bucket.bucket}"
+  key    = "logo-large.svg"
+  source = "web/logo-large.svg"
+  etag   = "${md5(file("web/logo-large.svg"))}"
+  content_type = "image/svg+xml"
+}

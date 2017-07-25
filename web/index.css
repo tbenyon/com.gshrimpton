@@ -1,0 +1,14 @@
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.contact-info {
+  list-style-type: none;
+  font-style: oblique;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.contact-info>li {
+  margin-bottom:8px;
+}
