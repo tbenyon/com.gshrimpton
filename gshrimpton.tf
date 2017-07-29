@@ -48,9 +48,9 @@ resource "aws_s3_bucket_object" "homepage" {
 
 resource "aws_s3_bucket_object" "favicon" {
   bucket = "${aws_s3_bucket.web_bucket.bucket}"
-  key    = "favicon.png"
-  source = "web/favicon.png"
-  etag   = "${md5(file("web/favicon.png"))}"
+  key    = "assets/favicon.png"
+  source = "web/assets/favicon.png"
+  etag   = "${md5(file("web/assets/favicon.png"))}"
   content_type = "image/png"
 }
 
@@ -62,10 +62,10 @@ resource "aws_s3_bucket_object" "styles" {
   content_type = "text/css"
 }
 
-resource "aws_s3_bucket_object" "logo-large" {
+resource "aws_s3_bucket_object" "logo" {
   bucket = "${aws_s3_bucket.web_bucket.bucket}"
-  key    = "logo-large.svg"
-  source = "web/logo-large.svg"
-  etag   = "${md5(file("web/logo-large.svg"))}"
+  key    = "assets/logo.svg"
+  source = "web/assets/logo.svg"
+  etag   = "${md5(file("web/assets/logo.svg"))}"
   content_type = "image/svg+xml"
 }
