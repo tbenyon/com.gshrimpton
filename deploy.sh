@@ -8,5 +8,5 @@ elif [ $STAGE == "prod" ]; then
     TERRAFORM_ENV="prod"
 fi
 
-./terraform env select $TERRAFORM_ENV
-./terraform apply
+terraform env select $TERRAFORM_ENV
+terraform apply

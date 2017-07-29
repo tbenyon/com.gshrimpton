@@ -17,10 +17,10 @@ jobs:
           command: curl -sSL https://releases.hashicorp.com/terraform/0.9.11/terraform_0.9.11_linux_amd64.zip > terraform.zip
       - run:
           name: Install Terraform
-          command: unzip terraform.zip
+          command: unzip terraform.zip -d /usr/local/bin
       - run:
           name: Init Terraform Backend
-          command: ./terraform init
+          command: terraform init
       - run:
           name: Deploy
           command: ./deploy.sh
