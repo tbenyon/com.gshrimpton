@@ -11,7 +11,7 @@ terraform {
 }
 
 resource "aws_s3_bucket" "web_bucket" {
-  bucket = "www.gshrimpton.com"
+  bucket = "www.${terraform.env == "prod" ? "" : "dev."}gshrimpton.com"
   acl    = "public-read"
 
   policy = <<EOF
@@ -25,7 +25,7 @@ resource "aws_s3_bucket" "web_bucket" {
       "s3:GetObject"
     ],
     "Effect": "Allow",
-    "Resource": "arn:aws:s3:::www.gshrimpton.com/*",
+    "Resource": "arn:aws:s3:::www.${terraform.env == "prod" ? "" : "dev."}gshrimpton.com/*",
     "Principal": "*"
   }
 ]

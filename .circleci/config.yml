@@ -22,8 +22,5 @@ jobs:
           name: Init Terraform Backend
           command: ./terraform init
       - run:
-          name: Plan
-          command: ./terraform plan -out=terraform.plan
-      - run:
           name: Deploy
-          command: ./terraform apply terraform.plan
+          command: ./deploy.sh
