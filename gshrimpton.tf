@@ -64,8 +64,8 @@ resource "aws_s3_bucket_object" "styles" {
 
 resource "aws_s3_bucket_object" "logo" {
   bucket = "${aws_s3_bucket.web_bucket.bucket}"
-  key    = "assets/logo.svg"
-  source = "web/assets/logo.svg"
-  etag   = "${md5(file("web/assets/logo.svg"))}"
-  content_type = "image/svg+xml"
+  key    = "assets/logo.png"
+  source = "web/assets/logo.png"
+  etag   = "${md5(file("web/assets/logo.png"))}"
+  content_type = "image/png"
 }

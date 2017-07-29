@@ -2,6 +2,12 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+#main-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .contact-info {
   list-style-type: none;
   font-style: oblique;
