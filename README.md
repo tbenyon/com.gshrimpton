@@ -1,4 +1,5 @@
 # GShrimpton.com Website
+### (...or, the most sophisticated deployment of a single static page website ever)
 
 Website with automated deployment. Uses, and therefore requires, [Terraform](https://www.terraform.io/).
 
@@ -24,11 +25,11 @@ AWS_ACCESS_KEY_ID=<your_access_key_id> AWS_SECRET_ACCESS_KEY=<your-access-key> t
 
 AWS profile can be set using `AWS_PROFILE` environment variable.
 
-Deploy environment can be specified using the `ENV` environment variable. Available values are:
+Deploy environment can be specified using the `STAGE` environment variable. Available values are:
 
 * dev
 * prod
 
 ```bash
-[AWS_PROFILE=profile-name] [ENV=dev|prod] ./deploy.sh
+[AWS_PROFILE=profile-name] [STAGE=dev|prod] ./deploy.sh
 ```
