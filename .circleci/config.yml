@@ -1,10 +1,7 @@
 version: 2
 
 jobs:
-  build:
-    branches:
-      only:
-        - master
+  deploy: &DEPLOY
     docker:
       - image: buildpack-deps:trusty
     steps:
@@ -24,3 +21,26 @@ jobs:
       - run:
           name: Deploy
           command: ./deploy.sh
+  deploy-dev:
+    <<: *DEPLOY
+    environment:
+      STAGE: dev
+  deploy-prod:
+    <<: *DEPLOY
+    environment:
+      STAGE: prod
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy-dev:
+          filters:
+            branches:
+              only: master
+      - prod-authorization:
+          type: approval
+          requires:
+            - deploy-dev
+      - deploy-prod:
+          requires:
+            - prod-authorization
