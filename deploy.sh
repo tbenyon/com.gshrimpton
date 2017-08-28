@@ -25,4 +25,6 @@ if [ $CONF != "dev" ] && [ $CONF != "prod" ]; then
 fi
 
 terraform env select $TERRAFORM_ENV
-terraform apply -var "configuration=$CONF"
+terraform apply \
+    -var "configuration=$CONF" \
+    -var "environment=$ENV"

@@ -3,6 +3,10 @@ variable "configuration" {
   default = "dev"
 }
 
+variable "environment" {
+  type    = "string"
+}
+
 provider "aws" {
   region  = "eu-west-2"
 }
@@ -16,7 +20,7 @@ terraform {
 }
 
 resource "aws_s3_bucket" "web_bucket" {
-  bucket = "www.${terraform.env == "prod" ? "" : "dev."}gshrimpton.com"
+  bucket = "www.${var.environment == "prod" ? "" : "${var.environment}."}gshrimpton.com"
   acl    = "public-read"
 
   policy = <<EOF
@@ -30,7 +34,7 @@ resource "aws_s3_bucket" "web_bucket" {
       "s3:GetObject"
     ],
     "Effect": "Allow",
-    "Resource": "arn:aws:s3:::www.${terraform.env == "prod" ? "" : "dev."}gshrimpton.com/*",
+    "Resource": "arn:aws:s3:::www.${var.environment == "prod" ? "" : "${var.environment}."}gshrimpton.com/*",
     "Principal": "*"
   }
 ]
