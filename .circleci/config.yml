@@ -24,11 +24,13 @@ jobs:
   deploy-dev:
     <<: *DEPLOY
     environment:
-      STAGE: dev
+      CONF: dev
+      ENV: dev
   deploy-prod:
     <<: *DEPLOY
     environment:
-      STAGE: prod
+      CONF: prod
+      ENV: prod
 workflows:
   version: 2
   deploy:

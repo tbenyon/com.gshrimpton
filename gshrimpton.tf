@@ -1,3 +1,8 @@
+variable "configuration" {
+  type    = "string"
+  default = "dev"
+}
+
 provider "aws" {
   region  = "eu-west-2"
 }
@@ -68,4 +73,13 @@ resource "aws_s3_bucket_object" "logo" {
   source = "web/assets/logo.png"
   etag   = "${md5(file("web/assets/logo.png"))}"
   content_type = "image/png"
+}
+
+resource "aws_s3_bucket_object" "robots_txt" {
+  count = "${var.configuration != "prod" ? 1 : 0}"
+  bucket = "${aws_s3_bucket.web_bucket.bucket}"
+  key    = "robots.txt"
+  source = "web/nonprod-robots.txt"
+  etag   = "${md5(file("web/nonprod-robots.txt"))}"
+  content_type = "text/plain"
 }
