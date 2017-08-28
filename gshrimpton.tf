@@ -1,6 +1,5 @@
 variable "configuration" {
   type    = "string"
-  default = "dev"
 }
 
 variable "environment" {
